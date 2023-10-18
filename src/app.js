@@ -33,7 +33,7 @@ const initPlayers = (players) => {
             name: PLAYERS[i],
             strength: getRandomStrength(),
             image: `images/super-${i + 1}.png`,
-            type: getRandomType()
+            type: getRandomType(),
         }
         detailedPlayers.push(players)
     }
@@ -53,7 +53,7 @@ function getRandomStrength() {
 }
 
 var type = ["hero", "villain"]
-const getRandomType = () => {
+function getRandomType() {
     var ran = Math.floor(Math.random() * type.length);
     return type[ran];
 }
