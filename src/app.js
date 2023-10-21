@@ -27,15 +27,18 @@ const initPlayers = (players) => {
     let detailedPlayers = [];
     // Create players using for loop
     // Type your code here
-    for (var i = 0; i < PLAYERS.length; i++) {
+    for (let i = 0; i < players.length; i++) {
         // console.log(PLAYERS[i])
-        const players = {
-            name: PLAYERS[i],
+        var currentPlayers = {
+            image: `images/super-${i + 1}.png`,
+            name: players[i],
             strength: getRandomStrength(),
             image: `images/super-${i + 1}.png`,
-            type: getRandomType(),
+            type: getRandomType(i)
         }
-        detailedPlayers.push(players)
+        // console.log(currentPlayers)
+        detailedPlayers.push(currentPlayers)
+        console.log("detailedPlayers",detailedPlayers)
     }
 
 
@@ -49,13 +52,31 @@ const initPlayers = (players) => {
 // Return a random integer (0,100]
 // Note: You can use Math.random() and Math.ceil()
 function getRandomStrength() {
-    return Math.ceil(Math.random() * 100)
+    return Math.floor(Math.random() * 101)
 }
 
+
+var heroCount=0;
+var villainCount=0;
 var type = ["hero", "villain"]
-function getRandomType() {
-    var ran = Math.floor(Math.random() * type.length);
-    return type[ran];
+const getRandomType=(i) =>{
+     if(i==0){
+        heroCount++;
+        return "hero";
+     }
+
+
+
+var ran = Math.floor(Math.random() * type.length);
+var tempType=type[ran];
+tempType=="hero"?heroCount++:villainCount++;
+if(heroCount>=10){
+    return "villain"; 
+}
+else if(villainCount>=10){
+    return "hero"
+}
+return type[ran];
 }
 
 
@@ -97,7 +118,7 @@ const viewPlayers = (players) => {
     document.getElementById('villains').innerHTML = buildPlayers(players, 'villain');
 
 }
-
+TEST_PLAYERS=["hero"]
 window.onload = () => {
     viewPlayers(initPlayers(PLAYERS));
 }
