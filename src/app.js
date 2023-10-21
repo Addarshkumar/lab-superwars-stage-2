@@ -52,13 +52,13 @@ const initPlayers = (players) => {
 // Return a random integer (0,100]
 // Note: You can use Math.random() and Math.ceil()
 function getRandomStrength() {
-    return Math.floor(Math.random() * 101)
+    return Math.floor(Math.random() * 101) 
 }
 
 
 var heroCount=0;
 var villainCount=0;
-var type = ["hero", "villain"]
+var type = ["hero", "villain"]  
 const getRandomType=(i) =>{
      if(i==0){
         heroCount++;
@@ -90,7 +90,7 @@ const buildPlayers = (players, type) => {
         for (var i = 0; i < players.length; i++) {
             if (players[i].type == "hero") {
                 fragment += `<div class="player">
-    <img src="${players[i].image}">
+    <img src="${players[i].image}" alt="">
     <div class="name">${players[i].name}</div>
     <div class="strength">${players[i].strength}</div>
  </div>`
@@ -101,7 +101,7 @@ const buildPlayers = (players, type) => {
         for (var i = 0; i < players.length; i++) {
             if (players[i].type == "villain") {
                 fragment += `<div class="player">
-        <img src="${players[i].image}">
+        <img src="${players[i].image}" alt="">
         <div class="name">${players[i].name}</div>
         <div class="strength">${players[i].strength}</div>
      </div>`
@@ -120,5 +120,5 @@ const viewPlayers = (players) => {
 }
 TEST_PLAYERS=["hero"]
 window.onload = () => {
-    viewPlayers(initPlayers(PLAYERS));
+    viewPlayers(initPlayers(PLAYERS))
 }
